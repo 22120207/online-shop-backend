@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: online-shop-backend-deployment
+  namespace: online-shop
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: online-shop-backend
+  template:
+    metadata:
+      labels:
+        app: online-shop-backend
+    spec:
+      hostNetwork: true
+      containers:
+        - name: online-shop-backend
+          image: 192.168.195.102:5000/tienminhktvn/online-shop-backend:v1
+          ports:
+            - containerPort: 5214
+      imagePullSecrets:
+        - name: docker-secret

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: online-shop-backend-service
+  labels:
+    app: online-shop-backend
+  namespace: online-shop
+spec:
+  type: ClusterIP
+  selector:
+    app: online-shop-backend
+  ports:
+    - protocol: TCP
+      port: 5214
+      targetPort: 5214
